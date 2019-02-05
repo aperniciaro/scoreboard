@@ -24,6 +24,8 @@ const main = () => {
   inningIncrement = 0
   document.querySelector('#victory').classList.remove('winner')
   document.querySelector('#victory').classList.add('no-winner')
+  document.querySelector('.team1').classList.remove('winning-team')
+  document.querySelector('.team2').classList.remove('winning-team')
   document
     .querySelector('#team-1-add-1-button')
     .classList.remove('disabled-button')
@@ -41,12 +43,10 @@ const main = () => {
 
 const addInning = () => {
   inningIncrement++
-  if (inningIncrement % 2 == 0) {
+  if (inningIncrement % 2 == 0 && inningIncrement < 17) {
     inningSide = 'Top'
     if (inningNumber < 9) {
       inningNumber++
-    } else {
-      inningNumber = 1
     }
   } else {
     inningSide = 'Bottom'
@@ -57,8 +57,8 @@ const addInning = () => {
 }
 
 const subtractInning = () => {
-  inningIncrement++
-  if (inningIncrement % 2 != 0) {
+  inningIncrement--
+  if (inningIncrement % 2 != 0 && inningIncrement > 0) {
     inningSide = 'Bottom'
     if (inningNumber > 1) {
       inningNumber--
@@ -90,6 +90,7 @@ const addTeam1 = () => {
       .classList.add('disabled-button')
     document.querySelector('#victory').classList.remove('no-winner')
     document.querySelector('#victory').classList.add('winner')
+    document.querySelector('.team1').classList.add('winning-team')
     document.querySelector('.victor').textContent = team1Name
   }
   document.querySelector('.team1Score').textContent = team1Counter
@@ -114,6 +115,7 @@ const addTeam2 = () => {
       .classList.add('disabled-button')
     document.querySelector('#victory').classList.remove('no-winner')
     document.querySelector('#victory').classList.add('winner')
+    document.querySelector('.team2').classList.add('winning-team')
     document.querySelector('.victor').textContent = team2Name
   }
   document.querySelector('.team2Score').textContent = team2Counter

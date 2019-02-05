@@ -56,6 +56,11 @@ h6 {
   color: yellow;
 }
 
+.winning-team {
+  color: yellow;
+  font-weight: bold;
+}
+
 .inning-tracker {
   display: flex;
   flex-direction: column;

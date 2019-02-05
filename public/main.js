@@ -6,11 +6,42 @@ let team1Name = 'Team 1'
 
 let team2Name = 'Team 2'
 
+let inningNumber = 1
+
+let inningSide = 'Top'
+
 const main = () => {
   // document.querySelectorAll('p').textContent = 0
   document.querySelector('.team1Score').textContent = 0
   document.querySelector('.team2Score').textContent = 0
+  document.querySelector('.inning').textContent = 1
+  document.querySelector('.inning-side').textContent = 'Top'
   console.log('page load')
+}
+
+const switchSide = () => {
+  if ((inningSide = 'Top')) {
+    inningSide = 'Bottom'
+  } else {
+    inningSide = 'Top'
+  }
+  document.querySelector('.inning-side').textContent = inningSide
+}
+
+const addInning = () => {
+  if (inningNumber < 9) {
+    inningNumber++
+  } else {
+    inningNumber = 1
+  }
+  document.querySelector('.inning').textContent = inningNumber
+}
+
+const subtractInning = () => {
+  if (inningNumber > 1) {
+    inningNumber--
+  }
+  document.querySelector('.inning').textContent = inningNumber
 }
 
 const addTeam1 = () => {
@@ -24,12 +55,16 @@ const addTeam2 = () => {
 }
 
 const subtractTeam1 = () => {
-  team1Counter--
+  if (team1Counter > 0) {
+    team1Counter--
+  }
   document.querySelector('.team1Score').textContent = team1Counter
 }
 
 const subtractTeam2 = () => {
-  team2Counter--
+  if (team2Counter > 0) {
+    team2Counter--
+  }
   document.querySelector('.team2Score').textContent = team2Counter
 }
 
@@ -46,6 +81,18 @@ const changeTeam2 = () => {
 }
 
 document.addEventListener('DOMContentLoaded', main)
+
+document
+  .querySelector('.inning-side-button')
+  .addEventListener('click', switchSide)
+
+document
+  .querySelector('.inning-add-button')
+  .addEventListener('click', addInning)
+
+document
+  .querySelector('.inning-subtract-button')
+  .addEventListener('click', subtractInning)
 
 document
   .querySelector('.team-1-add-1-button')

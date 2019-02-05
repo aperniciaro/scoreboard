@@ -9,17 +9,30 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  /* background-image:  */
+  background-image: url(/images/baseballfield.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 h1 {
   text-align: center;
 }
 
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
 .inning-tracker {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .number-and-side {
@@ -38,7 +51,7 @@ h1 {
 
 .update-score {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 
@@ -48,5 +61,16 @@ h1 {
 }
 
 .update-score section {
-  margin: 1rem;
+  margin: 1.5rem;
+}
+
+.team-name {
+  height: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .update-score {
+    flex-direction: row;
+    justify-content: center;
+  }
 }

@@ -22,10 +22,11 @@ const main = () => {
 const switchSide = () => {
   if ((inningSide = 'Top')) {
     inningSide = 'Bottom'
+    document.querySelector('.inning-side').textContent = inningSide
   } else {
     inningSide = 'Top'
+    document.querySelector('.inning-side').textContent = inningSide
   }
-  document.querySelector('.inning-side').textContent = inningSide
 }
 
 const addInning = () => {

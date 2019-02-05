@@ -13,23 +13,31 @@ let inningIncrement = 0
 let inningSide = 'Top'
 
 const main = () => {
-  // document.querySelectorAll('p').textContent = 0
   document.querySelector('.team1Score').textContent = 0
   document.querySelector('.team2Score').textContent = 0
   document.querySelector('.inning').textContent = 1
   document.querySelector('.inning-side').textContent = 'Top'
+  team1Counter = 0
+  team2Counter = 0
+  inningNumber = 1
+  inningSide = 'Top'
+  inningIncrement = 0
+  document.querySelector('#victory').classList.remove('winner')
+  document.querySelector('#victory').classList.add('no-winner')
+  document
+    .querySelector('#team-1-add-1-button')
+    .classList.remove('disabled-button')
+  document
+    .querySelector('#team-1-subtract-1-button')
+    .classList.remove('disabled-button')
+  document
+    .querySelector('#team-2-add-1-button')
+    .classList.remove('disabled-button')
+  document
+    .querySelector('#team-2-subtract-1-button')
+    .classList.remove('disabled-button')
   console.log('page load')
 }
-
-// const switchSide = () => {
-//   if ((inningSide == 'Top')) {
-//     inningSide = 'Bottom'
-//     document.querySelector('.inning-side').textContent = inningSide
-//   } else {
-//     inningSide = 'Top'
-//     document.querySelector('.inning-side').textContent = inningSide
-//   }
-// }
 
 const addInning = () => {
   inningIncrement++
@@ -64,24 +72,62 @@ const subtractInning = () => {
 }
 
 const addTeam1 = () => {
-  team1Counter++
+  if (team1Counter < 20 && team2Counter < 21) {
+    team1Counter++
+  } else if (team1Counter == 20 && team2Counter < 21) {
+    team1Counter++
+    document
+      .querySelector('#team-1-add-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-1-subtract-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-2-add-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-2-subtract-1-button')
+      .classList.add('disabled-button')
+    document.querySelector('#victory').classList.remove('no-winner')
+    document.querySelector('#victory').classList.add('winner')
+    document.querySelector('.victor').textContent = team1Name
+  }
   document.querySelector('.team1Score').textContent = team1Counter
 }
 
 const addTeam2 = () => {
-  team2Counter++
+  if (team2Counter < 20 && team1Counter < 21) {
+    team2Counter++
+  } else if (team2Counter == 20 && team1Counter < 21) {
+    team2Counter++
+    document
+      .querySelector('#team-1-add-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-1-subtract-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-2-add-1-button')
+      .classList.add('disabled-button')
+    document
+      .querySelector('#team-2-subtract-1-button')
+      .classList.add('disabled-button')
+    document.querySelector('#victory').classList.remove('no-winner')
+    document.querySelector('#victory').classList.add('winner')
+    document.querySelector('.victor').textContent = team2Name
+  }
   document.querySelector('.team2Score').textContent = team2Counter
 }
 
 const subtractTeam1 = () => {
-  if (team1Counter > 0) {
+  if (team1Counter > 0 && team1Counter < 21 && team2Counter < 21) {
     team1Counter--
   }
   document.querySelector('.team1Score').textContent = team1Counter
 }
 
 const subtractTeam2 = () => {
-  if (team2Counter > 0) {
+  if (team2Counter > 0 && team2Counter < 21 && team1Counter < 21) {
     team2Counter--
   }
   document.querySelector('.team2Score').textContent = team2Counter
@@ -101,9 +147,7 @@ const changeTeam2 = () => {
 
 document.addEventListener('DOMContentLoaded', main)
 
-// document
-//   .querySelector('.inning-side-button')
-//   .addEventListener('click', switchSide)
+document.querySelector('.reset-button').addEventListener('click', main)
 
 document
   .querySelector('.inning-add-button')
@@ -114,19 +158,19 @@ document
   .addEventListener('click', subtractInning)
 
 document
-  .querySelector('.team-1-add-1-button')
+  .querySelector('#team-1-add-1-button')
   .addEventListener('click', addTeam1)
 
 document
-  .querySelector('.team-1-subtract-1-button')
+  .querySelector('#team-1-subtract-1-button')
   .addEventListener('click', subtractTeam1)
 
 document
-  .querySelector('.team-2-add-1-button')
+  .querySelector('#team-2-add-1-button')
   .addEventListener('click', addTeam2)
 
 document
-  .querySelector('.team-2-subtract-1-button')
+  .querySelector('#team-2-subtract-1-button')
   .addEventListener('click', subtractTeam2)
 
 document

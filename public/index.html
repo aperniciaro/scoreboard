@@ -8,18 +8,30 @@
     <link rel="stylesheet" href="/screen.css" />
   </head>
   <body>
-    <h1>Baseball Score Board</h1>
+    <header>
+      <h1>Baseball Score Board</h1>
+      <button class="reset-button">
+        Reset Game
+      </button>
+    </header>
     <section class="inning-tracker">
-      <h3>Inning</h3>
+      <h3>Inning:</h3>
       <section class="number-and-side">
         <h4 class="inning-side">Top</h4>
         <h4 class="inning">1</h4>
       </section>
       <section class="inning-buttons">
-        <!-- <button class="inning-side-button">top/bottom of inning</button> -->
         <button class="inning-add-button">next inning</button>
         <button class="inning-subtract-button">previous inning</button>
       </section>
+    </section>
+    <section id="victory" class="no-winner">
+      <h6 class="victor">
+        Winner
+      </h6>
+      <h6>
+        Wins!
+      </h6>
     </section>
     <section class="score-area">
       <section class="team1">
@@ -40,8 +52,8 @@
         </section>
         <section>
           update team 1 score
-          <button class="team-1-add-1-button">add 1</button>
-          <button class="team-1-subtract-1-button">subtract 1</button>
+          <button id="team-1-add-1-button">add 1</button>
+          <button id="team-1-subtract-1-button">subtract 1</button>
         </section>
       </section>
       <section class="team2">
@@ -52,8 +64,8 @@
         </section>
         <section>
           update team 2 score
-          <button class="team-2-add-1-button">add 1</button>
-          <button class="team-2-subtract-1-button">subtract 1</button>
+          <button id="team-2-add-1-button">add 1</button>
+          <button id="team-2-subtract-1-button">subtract 1</button>
         </section>
       </section>
     </section>

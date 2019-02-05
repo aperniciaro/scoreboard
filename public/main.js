@@ -8,6 +8,8 @@ let team2Name = 'Team 2'
 
 let inningNumber = 1
 
+let inningIncrement = 0
+
 let inningSide = 'Top'
 
 const main = () => {
@@ -19,30 +21,46 @@ const main = () => {
   console.log('page load')
 }
 
-const switchSide = () => {
-  if ((inningSide = 'Top')) {
-    inningSide = 'Bottom'
-    document.querySelector('.inning-side').textContent = inningSide
-  } else {
-    inningSide = 'Top'
-    document.querySelector('.inning-side').textContent = inningSide
-  }
-}
+// const switchSide = () => {
+//   if ((inningSide == 'Top')) {
+//     inningSide = 'Bottom'
+//     document.querySelector('.inning-side').textContent = inningSide
+//   } else {
+//     inningSide = 'Top'
+//     document.querySelector('.inning-side').textContent = inningSide
+//   }
+// }
 
 const addInning = () => {
-  if (inningNumber < 9) {
-    inningNumber++
+  inningIncrement++
+  if (inningIncrement % 2 == 0) {
+    inningSide = 'Top'
+    if (inningNumber < 9) {
+      inningNumber++
+    } else {
+      inningNumber = 1
+    }
   } else {
-    inningNumber = 1
+    inningSide = 'Bottom'
   }
   document.querySelector('.inning').textContent = inningNumber
+  document.querySelector('.inning-side').textContent = inningSide
+  console.log(inningIncrement)
 }
 
 const subtractInning = () => {
-  if (inningNumber > 1) {
-    inningNumber--
+  inningIncrement++
+  if (inningIncrement % 2 != 0) {
+    inningSide = 'Bottom'
+    if (inningNumber > 1) {
+      inningNumber--
+    }
+  } else {
+    inningSide = 'Top'
   }
   document.querySelector('.inning').textContent = inningNumber
+  document.querySelector('.inning-side').textContent = inningSide
+  console.log(inningIncrement)
 }
 
 const addTeam1 = () => {
@@ -83,9 +101,9 @@ const changeTeam2 = () => {
 
 document.addEventListener('DOMContentLoaded', main)
 
-document
-  .querySelector('.inning-side-button')
-  .addEventListener('click', switchSide)
+// document
+//   .querySelector('.inning-side-button')
+//   .addEventListener('click', switchSide)
 
 document
   .querySelector('.inning-add-button')

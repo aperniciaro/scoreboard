@@ -42,32 +42,36 @@ const main = () => {
 }
 
 const addInning = () => {
-  inningIncrement++
-  if (inningIncrement % 2 == 0 && inningIncrement < 17) {
-    inningSide = 'Top'
-    if (inningNumber < 9) {
-      inningNumber++
+  if (inningIncrement < 17) {
+    inningIncrement++
+    if (inningIncrement % 2 == 0) {
+      inningSide = 'Top'
+      if (inningNumber < 9) {
+        inningNumber++
+      }
+    } else {
+      inningSide = 'Bottom'
     }
-  } else {
-    inningSide = 'Bottom'
+    document.querySelector('.inning').textContent = inningNumber
+    document.querySelector('.inning-side').textContent = inningSide
   }
-  document.querySelector('.inning').textContent = inningNumber
-  document.querySelector('.inning-side').textContent = inningSide
   console.log(inningIncrement)
 }
 
 const subtractInning = () => {
-  inningIncrement--
-  if (inningIncrement % 2 != 0 && inningIncrement > 0) {
-    inningSide = 'Bottom'
-    if (inningNumber > 1) {
-      inningNumber--
+  if (inningIncrement > 0) {
+    inningIncrement--
+    if (inningIncrement % 2 != 0) {
+      inningSide = 'Bottom'
+      if (inningNumber > 1) {
+        inningNumber--
+      }
+    } else {
+      inningSide = 'Top'
     }
-  } else {
-    inningSide = 'Top'
+    document.querySelector('.inning').textContent = inningNumber
+    document.querySelector('.inning-side').textContent = inningSide
   }
-  document.querySelector('.inning').textContent = inningNumber
-  document.querySelector('.inning-side').textContent = inningSide
   console.log(inningIncrement)
 }
 
